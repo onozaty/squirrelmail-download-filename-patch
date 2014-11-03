@@ -11,7 +11,13 @@ SquirrelMail 1.4.22 で日本語ファイル名の文字化けに対応したコ
 
 対応としては、Content-Dispositonのfilenameを下記のような形式とするようにしています。
 * IE(11未満)：UTF8でURLEncode
+```
+Content-Disposition: attachment; filename="%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88.txt"
+```
 * 上記以外：RFC2231形式
+```
+Content-Disposition	attachment; filename*=UTF-8''%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88.txt
+```
 
 確認ができているブラウザは下記の通りです。(全てWindowsです)
 * IE7 (7.0.6002.18005)
