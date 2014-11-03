@@ -2557,6 +2557,13 @@ function SendDownloadHeaders($type0, $type1, $filename, $force, $filesize=0) {
         $filename = preg_replace('/[\\\\\/:*?"<>|;]/', '_', str_replace('&#32;', ' ', $filename));
     }
 
+    $encoded_filename = rawurlencode($filename);
+    if ($isIE) {
+        $content_disposition_filename = "filename=\"$encoded_filename\"";
+    } else {
+        $content_disposition_filename = "filename*=UTF-8''$encoded_filename";
+    }
+
     // A Pox on Microsoft and it's Internet Explorer!
     //
     // IE has lots of bugs with file downloads.
@@ -2570,19 +2577,15 @@ function SendDownloadHeaders($type0, $type1, $filename, $force, $filesize=0) {
     // version
     //set all the Cache Control Headers for IE
     if ($isIE) {
-        $filename=rawurlencode($filename);
         header ("Pragma: public");
         header ("Cache-Control: no-store, max-age=0, no-cache, must-revalidate"); // HTTP/1.1
         header ("Cache-Control: post-check=0, pre-check=0", false);
         header ("Cache-Control: private");
-
-        //set the inline header for IE, we'll add the attachment header later if we need it
-        header ("Content-Disposition: inline; filename=$filename");
     }
 
     if (!$force) {
         // Try to show in browser window
-        header ("Content-Disposition: inline; filename=\"$filename\"");
+        header ("Content-Disposition: inline; $content_disposition_filename");
         header ("Content-Type: $type0/$type1; name=\"$filename\"");
     } else {
         // Try to pop up the "save as" box
@@ -2601,7 +2604,7 @@ function SendDownloadHeaders($type0, $type1, $filename, $force, $filesize=0) {
         // http://support.microsoft.com/support/kb/articles/Q182/3/15.asp
         // Do not have quotes around filename, but that applied to
         // "attachment"... does it apply to inline too?
-        header ("Content-Disposition: attachment; filename=\"$filename\"");
+        header ("Content-Disposition: attachment; $content_disposition_filename");
 
         if ($isIE && !$isIE6plus) {
             // This combination seems to work mostly.  IE 5.5 SP 1 has

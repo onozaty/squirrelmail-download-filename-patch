@@ -681,12 +681,7 @@ function japanese_charset_xtra() {
             break;
         case 'downloadfilename':
             $useragent = func_get_arg(2);
-            if (strstr($useragent, 'Windows') !== false ||
-                strstr($useragent, 'Mac_') !== false) {
-                $ret = mb_convert_encoding($ret, 'SJIS', 'AUTO');
-            } else {
-                $ret = mb_convert_encoding($ret, 'EUC-JP', 'AUTO');
-}
+            $ret = mb_convert_encoding($ret, 'UTF-8', 'AUTO');
             break;
         case 'wordwrap':
             $no_begin = "\x21\x25\x29\x2c\x2e\x3a\x3b\x3f\x5d\x7d\xa1\xf1\xa1\xeb\xa1" .
