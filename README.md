@@ -38,3 +38,8 @@ Installation
 SquirrelMailをインストールしたディレクトリのfunctions配下の2ファイルを、本リポジトリで提供されているファイルと置き換えるだけです。
 * functions/i18n.php
 * functions/mime.php
+
+License
+------------
+
+本家のソースをもとにしているので、本家と同様に GNU General Public License v2 とします。
