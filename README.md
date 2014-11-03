@@ -16,7 +16,7 @@ Content-Disposition: attachment; filename="%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%
 ```
 * 上記以外：RFC2231形式
 ```
-Content-Disposition	attachment; filename*=UTF-8''%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88.txt
+Content-Disposition: attachment; filename*=UTF-8''%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88.txt
 ```
 
 確認ができているブラウザは下記の通りです。(全てWindowsです)
