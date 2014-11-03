@@ -42,4 +42,4 @@ SquirrelMailをインストールしたディレクトリのfunctions配下の2�
 License
 ------------
 
-本家のソースをもとにしているので、本家と同様に GNU General Public License v2 とします。
+元としているソースと同様に GNU General Public License v2 とします。
